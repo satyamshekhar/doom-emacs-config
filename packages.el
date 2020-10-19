@@ -8,8 +8,9 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
-(package! flx)
 (package! ace-window)
+(package! bazel-mode)
+(package! flx)
 (package! impatient-mode)
 (package! mixed-pitch)
 
