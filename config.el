@@ -59,13 +59,16 @@
 ;;   this file. Emacs searches the `load-path' when you load packages with
 ;;   `require' or `use-package'.
 ;; - `map!' for binding new keys
-(add-load-path! "lib/" "modes/")
+;;
 ;; To get information about any of these functions/macros, move the cursor over
 ;; the highlighted symbol at press 'K' (non-evil users must press 'C-c c k').
 ;; This will open documentation for it, including demos of how they are used.
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Add libraries and mode setup to the load path.
+(add-load-path! "lib/" "modes/")
 
 ;; Optimizations
 
@@ -151,23 +154,27 @@
   (setq whitespace-line-column 75)
   (subword-mode))
 
-(add-hook 'prog-mode-hook 'dud-prog-mode-hook)
-(add-hook 'markdown-mode-hook 'dud-prog-mode-hook)
-(add-hook 'protobuf-mode-hook 'dud-prog-mode-hook)
-(add-hook 'yaml-mode-hook 'dud-prog-mode-hook)
+(add-hook! prog-mode 'dud-prog-mode-hook)
+(add-hook! markdown-mode 'dud-prog-mode-hook)
+(add-hook! protobuf-mode 'dud-prog-mode-hook)
+(add-hook! yaml-mode 'dud-prog-mode-hook)
 
 ;; Use tabs for C++, Java, Go and Json
-(add-hook 'protobuf-mode-hook 'dud-proto-mode-hook)
-(add-hook 'c++-mode-hook 'dud-cc-mode-hook)
-(add-hook 'java-mode-hook 'dud-java-mode-hook)
-(add-hook 'sh-mode-hook 'dud-sh-mode-hook)
+(add-hook! protobuf-mode 'dud-proto-mode-hook)
+(add-hook! c++-mode 'dud-cc-mode-hook)
+(add-hook! java-mode 'dud-java-mode-hook)
+(add-hook! sh-mode 'dud-sh-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Ace window
-(global-set-key (kbd "C-x o") 'ace-window)
-(setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
-(setq aw-background t)
+;; (global-set-key (kbd "C-x o") 'ace-window)
+;; (setq aw-keys '(?a ?s ?d ?f ?g ?h ?j ?k ?l))
+;; (setq aw-background t)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Key Bindings
+(global-set-key (kbd "M-g") 'goto-line)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Netspring Specific connfiguration.
