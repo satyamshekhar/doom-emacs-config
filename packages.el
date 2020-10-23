@@ -8,7 +8,10 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 
+;;; Code:
+
 (package! bazel-mode)
+(package! typescript-mode)
 (package! impatient-mode)
 (package! mixed-pitch)
 

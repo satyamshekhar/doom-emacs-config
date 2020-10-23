@@ -150,7 +150,7 @@
   (setq sh-indentation 2))
 
 (defun dud-prog-mode-hook ()
-  "Customizations to prog-mode"
+  "Customizations to prog-mode."
   (setq whitespace-line-column 75)
   (subword-mode))
 
