@@ -19,14 +19,9 @@
 ;;
 ;; They all accept either a font-spec, font string ("Input Mono-12"), or xlfd
 ;; font string. You generally only need these two:
-;; (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "sans" :size 13))
-;; (setq doom-font (font-spec :family "Fira Code" :size 12 :weight 'semi-light)
-;;       doom-variable-pitch-font (font-spec :family "Fira Code") ; inherits `doom-font''s :size
-;;       doom-unicode-font (font-spec :family "Fira Code" :size 12)
-;;       doom-big-font (font-spec :family "Fira Mono" :size 19))
 ;; "monospace" means use the system default. However, the default is usually two
 ;; points larger than I'd like, so I specify size 12 here.
+
 (setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
       doom-variable-pitch-font (font-spec :family "sans" :size 13))
 
