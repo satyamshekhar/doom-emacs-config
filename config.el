@@ -72,6 +72,15 @@
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
+;; Replace the active region just by typing text, and delete the selected text
+;; just by hitting delete.
+(delete-selection-mode t)
+;; Disable auto-revert (reload) of file buffers while they are loaded to prevent
+;; data loss.
+(global-auto-revert-mode -1)
+
+;; Shorter filename in modeline.
+(setq doom-modeline-buffer-file-name-style 'truncate-all)
 
 ;; IMO, modern editors have trained a bad habit into us all: a burning
 ;; need for completion all the time -- as we type, as we breathe, as we
@@ -170,7 +179,16 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key Bindings
-(global-set-key (kbd "M-g") 'goto-line)
+;; (global-set-key (kbd "M-g") 'goto-line)
+(global-set-key (kbd "C-s") 'isearch-forward-regexp)
+(global-set-key (kbd "C-r") 'isearch-backward-regexp)
+(global-set-key (kbd "C-%") 'query-replace-regexp)
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; Shorter buffer name in modeline
+(setq uniquify-buffer-name-style 'post-forward)
+(setq uniquify-after-kill-buffer-p t)
+(setq uniquify-ignore-buffers-re "^\\*")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Netspring Specific connfiguration.
