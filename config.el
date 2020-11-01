@@ -68,9 +68,7 @@
 ;; Add libraries and mode setup to the load path.
 (add-load-path! "lib/" "modes/")
 
-;; Optimizations
-
-;; Disable smartparens
+;; Disable smartparens since it tends to slow things down.
 (remove-hook 'doom-first-buffer-hook #'smartparens-global-mode)
 ;; Prevents some cases of Emacs flickering
 (add-to-list 'default-frame-alist '(inhibit-double-buffering . t))
@@ -80,9 +78,12 @@
 ;; Disable auto-revert (reload) of file buffers while they are loaded to prevent
 ;; data loss.
 (global-auto-revert-mode -1)
-
 ;; Shorter filename in modeline.
 (setq doom-modeline-buffer-file-name-style 'truncate-all)
+;; Set up right option key to work as meta on MacOs.
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  (setq ns-right-alternate-modifier 'meta)
+)
 
 ;; IMO, modern editors have trained a bad habit into us all: a burning
 ;; need for completion all the time -- as we type, as we breathe, as we
