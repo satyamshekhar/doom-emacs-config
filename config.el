@@ -22,8 +22,10 @@
 ;; "monospace" means use the system default. However, the default is usually two
 ;; points larger than I'd like, so I specify size 12 here.
 
-(setq doom-font (font-spec :family "monospace" :size 12 :weight 'semi-light)
-      doom-variable-pitch-font (font-spec :family "sans" :size 13))
+;; Set "monaco" font only for Emacs running as native app on MacOs.
+(when (and (display-graphic-p) (eq system-type 'darwin))
+  (setq doom-font (font-spec :family "monaco" :size 12 :weight 'semi-light)
+        doom-variable-pitch-font (font-spec :family "sans" :size 13)))
 
 ;; Variable width font support
 (use-package mixed-pitch
