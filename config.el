@@ -28,7 +28,7 @@
 ;; Set "monaco" font only for Emacs running as native app on MacOs.
 (when (and (display-graphic-p) (eq system-type 'darwin))
   (setq doom-font (font-spec :family "monaco" :size 12 :weight 'semi-light)
-        doom-variable-pitch-font (font-spec :family "sans" :size 13)))
+        doom-variable-pitch-font (font-spec :family "monaco" :size 13)))
 
 ;; Variable width font support
 (use-package mixed-pitch
@@ -81,8 +81,7 @@
 (setq doom-modeline-buffer-file-name-style 'truncate-all)
 ;; Set up right option key to work as meta on MacOs.
 (when (and (display-graphic-p) (eq system-type 'darwin))
-  (setq ns-right-alternate-modifier 'meta)
-)
+  (setq ns-right-alternate-modifier 'meta))
 
 ;; IMO, modern editors have trained a bad habit into us all: a burning
 ;; need for completion all the time -- as we type, as we breathe, as we
@@ -213,9 +212,12 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shorter buffer name in modeline
+
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p t)
-(setq uniquify-ignore-buffers-re "^\\*")
+;; (set-face-background 'mode-line-inactive "#5c4caa")
+(set-face-background 'mode-line "#5c4caa")
+;; (set-face-background 'mode-line "#003594")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Netspring Specific connfiguration.
