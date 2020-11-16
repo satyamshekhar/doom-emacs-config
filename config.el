@@ -38,8 +38,13 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-;; (setq doom-theme 'doom-dark+)
-(setq doom-theme 'leuven)
+(setq doom-theme 'doom-one-light)
+(set-face-background 'mode-line "#d6d4d4")
+(global-hl-line-mode +1)
+(set-face-attribute 'hl-line nil :inherit nil :background "#ebebeb")
+(set-face-attribute 'region nil :background "#faf5d2")
+
+(set-face-foreground 'minibuffer-prompt "#1671c7")
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -123,7 +128,6 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup clang-format
-;;
 (load "clang-format.el")
 (add-to-list 'auto-mode-alist '("\\.ipp\\'" . c++-mode))
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -180,20 +184,21 @@
   :config
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 (setq org-roam-file-exclude-regexp ".git/")
+
 (after! org
   (setq org-skip-scheduled-if-done t
         org-tags-column -80
-        org-todo-keywords '((sequence "TODO(t)" "ACTIVE(a)" "WAITING(w)" "|" "DONE(d)" "CANCELLED(c)"))
-        org-todo-keyword-faces '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-                                 ("ACTIVE" :foreground "9f7efe" :weight normal :underline t)
-                                 ("WAITING" :foreground "#0098dd" :weight normal :underline t)
-                                 ("DONE" :foreground "#50a14f" :weight normal :underline t)
-                                 ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
-        ;; org-bullets-bullet-list '("◉" "○" "✸" "✿")
-        ;; org-bullets-bullet-list '("∵")
-        org-ellipsis " ▼ "
-        )
-  )
+        org-todo-keywords
+        '((sequence "TODO(t)" "ACTIVE(a)" "WAITING(w)"
+                    "|" "DONE(d)" "CANCELLED(c)"))
+        org-todo-keyword-faces
+        '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
+          ("ACTIVE" :foreground "9f7efe" :weight normal :underline t)
+          ("WAITING" :foreground "#0098dd" :weight normal :underline t)
+          ("DONE" :foreground "#50a14f" :weight normal :underline t)
+          ("CANCELLED" :foreground "#ff6480" :weight normal :underline t))
+        org-ellipsis " ▼ "))
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -215,9 +220,6 @@
 
 (setq uniquify-buffer-name-style 'post-forward)
 (setq uniquify-after-kill-buffer-p t)
-;; (set-face-background 'mode-line-inactive "#5c4caa")
-(set-face-background 'mode-line "#5c4caa")
-;; (set-face-background 'mode-line "#003594")
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Netspring Specific connfiguration.
