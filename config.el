@@ -26,25 +26,55 @@
 ;; points larger than I'd like, so I specify size 12 here.
 
 ;; Set "monaco" font only for Emacs running as native app on MacOs.
-(when (and (display-graphic-p) (eq system-type 'darwin))
-  (setq doom-font (font-spec :family "monaco" :size 12 :weight 'semi-light)
-        doom-variable-pitch-font (font-spec :family "monaco" :size 13)))
+;; (when (and (display-graphic-p) (eq system-type 'darwin))
+;;   (setq doom-font (font-spec :family "monaco" :size 12 :weight 'semi-light)
+;;         doom-variable-pitch-font (font-spec :family "monaco" :size 13)))
 
 ;; Variable width font support
 (use-package mixed-pitch
   :hook
   (text-mode . mixed-pitch-mode))
 
+(font-lock-add-keywords 'c++-mode
+  '(("\\<\\(co_return\\|co_await\\|co_yield\\)\\>" . font-lock-keyword-face)))
+
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one-light)
-(set-face-background 'mode-line "#d6d4d4")
+;; (setq doom-theme 'doom-one-light)
+(setq doom-theme 'sanityinc-tomorrow-day)
 (global-hl-line-mode +1)
-(set-face-attribute 'hl-line nil :inherit nil :background "#ebebeb")
-(set-face-attribute 'region nil :background "#faf5d2")
 
-(set-face-foreground 'minibuffer-prompt "#1671c7")
+(custom-theme-set-faces! 'doom-one-light
+  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
+  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
+
+(custom-theme-set-faces! 'sanityinc-tomorrow-day
+  `('hl-line :inherit nil :background "#ebebeb")
+  `(mode-line :inherit nil :background "#d6d4d4")
+  `(region :background "#cbe9f2")
+  `(minibuffer-prompt :foreground "#1671c7")
+  `(isearch :background "#ffffff" :foreground "#f24b80" :inverse-video t)
+  `(ivy-minibuffer-match-face-2 :foreground "#a72ded")
+  `(default :background "#ffffff" :foreground "#2a2a2a")
+  `(font-lock-comment-face :foreground "#863fb5")
+  `(font-lock-comment-delimiter-face :foreground "#8e908c")
+  `(font-lock-constant-face :foreground "#4271ae")
+  `(font-lock-doc-face :foreground "#8959a8")
+  `(font-lock-function-name-face :foreground "#db7309")
+  `(font-lock-keyword-face :foreground "#2f632a")
+  `(font-lock-negation-char-face :foreground "#4271ae")
+  `(font-lock-preprocessor-face :foreground "#8959a8")
+  `(font-lock-string-face :foreground "#2746ab")
+  `(font-lock-type-face :foreground "#2f5587")
+  `(font-lock-variable-name-face :foreground "1f44db")
+  `(popup-tip-face :background "#ffaa6e" :foreground "#010000")
+  `(flycheck-error :foreground "red" :underline t)
+  `(flycheck-info :foreground "#06750a" :underline t)
+  `(flycheck-warning :foreground "#f5871f" :underline t)
+  `(highlight-indent-guides-character-face :foreground "#828282")
+  `(whitespace-indentation :background nil :foreground "#828282")
+  `(fill-column-indicator :foreground "#828282"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -108,10 +138,6 @@
 (setq evil-split-window-below t
       evil-vsplit-window-right t)
 
-(custom-theme-set-faces! 'doom-dracula
-  `(markdown-code-face :background ,(doom-darken 'bg 0.075))
-  `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
-
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 (setq auto-mode-alist
       (cons '("SConstruct" . python-mode) auto-mode-alist))
@@ -143,8 +169,10 @@
 
 (defun dud-cc-mode-hook ()
   (setq fill-column 75)
-  (local-set-key (kbd "M-]") 'dud-c-rotate)
-  (local-set-key (kbd "M-[") 'dud-c-rotate-rev)
+  (setq c-basic-offset 2)
+  (setq tab-width 2)
+  (local-set-key (kbd "M-0") 'dud-c-rotate)
+  (local-set-key (kbd "M-9") 'dud-c-rotate-rev)
   (local-set-key (kbd "M-=") 'clang-format-buffer))
 
 (defun dud-proto-mode-hook ()
