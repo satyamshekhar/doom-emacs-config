@@ -78,6 +78,9 @@
                    when (file-exists-p file) return (find-file file)))
       (message "No rotation defined for current file"))))
 
+(font-lock-add-keywords 'c++-mode
+  '(("\\<\\(co_return\\|co_await\\|co_yield\\)\\>" . font-lock-keyword-face)))
+
 (require 'google-c-style)
 (add-hook 'c-mode-common-hook 'google-set-c-style)
 (add-hook 'c-mode-common-hook 'google-make-newline-indent)
