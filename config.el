@@ -47,7 +47,7 @@
   `(font-lock-variable-name-face :foreground ,(doom-lighten 'magenta 0.6)))
 
 (custom-theme-set-faces! 'sanityinc-tomorrow-day
-  `('hl-line :inherit nil :background "#ebebeb")
+  `('hl-line :inherit nil :background "#f9ebff")
   `(mode-line :inherit nil :background "#d6d4d4")
   `(region :background "#cbe9f2")
   `(minibuffer-prompt :foreground "#1671c7")
@@ -189,6 +189,8 @@
   (setq c-basic-offset 2)
   (setq tab-width 2)
   (setq whitespace-line-column 75)
+  (highlight-indent-guides-mode)
+  (display-fill-column-indicator-mode)
   (subword-mode))
 
 (add-hook! prog-mode 'dud-prog-mode-hook)
