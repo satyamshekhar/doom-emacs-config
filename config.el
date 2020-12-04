@@ -41,6 +41,13 @@
 ;; (setq doom-theme 'doom-one-light)
 (setq doom-theme 'sanityinc-tomorrow-day)
 (global-hl-line-mode +1)
+;; Set symbol for the border
+(set-face-foreground 'vertical-border "#a6a6a6")
+(set-display-table-slot standard-display-table
+                        'vertical-border
+                        (make-glyph-code ?┃))
+;; (set-face-background 'vertical-border "#5c5c5c")
+;; (set-face-foreground 'vertical-border (face-background 'vertical-border))
 
 (custom-theme-set-faces! 'doom-one-light
   `(markdown-code-face :background ,(doom-darken 'bg 0.075))
@@ -57,7 +64,8 @@
   `(font-lock-builtin-face :foreground "#8959a8")
   `(font-lock-comment-face :foreground "#636363")
   `(font-lock-comment-delimiter-face :foreground "#636363")
-  `(font-lock-constant-face :foreground "#8a501a")
+  ;; `(font-lock-constant-face :foreground "#8a501a")
+  `(font-lock-constant-face :foreground "#221fd1")
   `(font-lock-doc-face :foreground "#8959a8")
   `(font-lock-function-name-face :foreground "#e34000")
   `(font-lock-keyword-face :foreground "#0e9107")
@@ -65,15 +73,16 @@
   `(font-lock-preprocessor-face :foreground "#8959a8")
   `(font-lock-regexp-grouping-construct :foreground "#8959a8")
   `(font-lock-string-face :foreground "#2746ab")
-  `(font-lock-type-face :foreground "#8a501a")
+  ;;`(font-lock-type-face :foreground "#8a501a")
+  `(font-lock-type-face :foreground "#221fd1")
   `(font-lock-variable-name-face :foreground "#e34000")
   `(popup-tip-face :background "#ffaa6e" :foreground "#010000")
   `(flycheck-error :foreground "red" :underline t)
   `(flycheck-info :foreground "#06750a" :underline t)
   `(flycheck-warning :foreground "#f5871f" :underline t)
-  `(highlight-indent-guides-character-face :foreground "#828282")
-  `(whitespace-indentation :background nil :foreground "#828282")
-  `(fill-column-indicator :foreground "#828282"))
+  `(highlight-indent-guides-character-face :foreground "#b3b3b3")
+  `(whitespace-indentation :background nil :foreground "#b3b3b3")
+  `(fill-column-indicator :foreground "#f57dbb"))
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -186,6 +195,7 @@
 
 (defun dud-prog-mode-hook ()
   "Customizations to prog-mode."
+  (setq fill-column 75)
   (setq c-basic-offset 2)
   (setq tab-width 2)
   (setq whitespace-line-column 75)
