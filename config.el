@@ -189,6 +189,8 @@
 
 (defun dud-java-mode-hook()
   (setq fill-column 75)
+  (local-set-key (kbd "M-0") 'dud-c-rotate)
+  (local-set-key (kbd "M-9") 'dud-c-rotate-rev)
   (local-set-key (kbd "M-=") 'clang-format-buffer))
 
 (defun dud-sh-mode-hook()
@@ -255,6 +257,12 @@
 (global-set-key (kbd "C-s") 'isearch-forward-regexp)
 (global-set-key (kbd "C-r") 'isearch-backward-regexp)
 (global-set-key (kbd "C-%") 'query-replace-regexp)
+(map! :leader
+      :desc "Bazel build current buffer"
+      "c b" #'ns-build-buffer)
+(map! :leader
+      :desc "Bazel test current buffer"
+      "c t" #'ns-test-buffer)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Shorter buffer name in modeline

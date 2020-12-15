@@ -15,7 +15,7 @@
 ;; GNU General Public License for more details.
 
 ;; You should have received a copy of the GNU General Public License
-;; along with this program; if not, write to the Free Software
+;; along with this xoprogram; if not, write to the Free Software
 ;; Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA
 ;; 02110-1301, USA.
 
@@ -37,7 +37,10 @@
     ("_test.cc" . (".hpp" ".h" ".cc" ".cpp" ".ipp"))
     (".cpp" . (".ipp" "_test.cpp" ".hpp" ".h"))
     (".cc" . (".ipp" "_test.cc" "_test.cpp" ".hpp" ".h"))
-    (".ipp" . ("_test.cpp" "_test.cc" ".hpp" ".h" ".cpp" ".cc"))))
+    (".ipp" . ("_test.cpp" "_test.cc" ".hpp" ".h" ".cpp" ".cc"))
+    ("Test.java" . (".java"))
+    (".java" . ("Test.java"))
+    ))
 
 (defun ends-with (string suffix)
   "Returns t if @string ends with @suffix, nil otherwise."
