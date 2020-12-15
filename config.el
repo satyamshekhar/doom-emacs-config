@@ -159,6 +159,8 @@
       (cons '("\\.bzl\\'" . bazel-starlark-mode) auto-mode-alist))
 (setq auto-mode-alist
       (cons '(".bazelrc'" . bazelrc-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.jsonnet\\'" . js-mode) auto-mode-alist))
+(setq auto-mode-alist (cons '("\\.tsonnet\\'" . js-mode) auto-mode-alist))
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Setup clang-format
