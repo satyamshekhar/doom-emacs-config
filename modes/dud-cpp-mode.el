@@ -30,6 +30,9 @@
 
 ;; file-name suffix is compared with first elements from the list
 ;; in the order specified here.
+
+;;; Code:
+
 (defvar dud-c-rotation-map
   '((".hpp" . (".cpp" ".ipp" ".cc" "_test.cc" "_test.cpp"))
     (".h" . (".cpp" ".ipp" ".cc" "_test.cc" "_test.cpp"))
@@ -43,13 +46,13 @@
     ))
 
 (defun ends-with (string suffix)
-  "Returns t if @string ends with @suffix, nil otherwise."
+  "Return t if STRING ends with SUFFIX, nil otherwise."
   (let ((start (- (length string) (length suffix))))
     (and (>= start 0)
          (string= suffix (substring string (- (length suffix)))))))
 
 (defun dud-c-rotated-files (file-name)
-  "Returns list of file names if the file can be rotated, nil otherwise."
+  "Return list of file names if FILE-NAME can be rotated, nil otherwise."
   (let* ((ext-map (cl-find-if (lambda (rotation-map)
                              (ends-with file-name (car rotation-map)))
                            dud-c-rotation-map))
@@ -60,7 +63,7 @@
                       new-suffix)) new-suffix-list)))
 
 (defun dud-c-rotate ()
-  "Rotates buffer among file.hpp <-> file.cpp <-> file_test.cpp"
+  "Rotate buffer among file.hpp <-> file.cpp <-> file_test.cpp."
   (interactive)
   (let* ((file-path (buffer-file-name))
         (rotated-files (dud-c-rotated-files file-path)))
