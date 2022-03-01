@@ -120,6 +120,8 @@
 ;; Disable auto-revert (reload) of file buffers while they are loaded to prevent
 ;; data loss.
 (global-auto-revert-mode -1)
+;; Disable mouse mode to enable copy on selection.
+(xterm-mouse-mode -1)
 ;; Shorter filename in modeline.
 (setq doom-modeline-buffer-file-name-style 'truncate-all)
 ;; Set up right option key to work as meta on MacOs.
@@ -141,6 +143,9 @@
   ;; I prefer search matching to be ordered; it's more precise
   (add-to-list 'ivy-re-builders-alist
                '(counsel-projectile-find-file . ivy--regex-plus)))
+
+(after! counsel
+  (add-to-list 'counsel-compile-local-builds 'ns-get-bazel-build-cmd))
 
 ;; Switch to the new window after splitting
 (setq evil-split-window-below t
@@ -174,6 +179,10 @@
 (require 'dud-cpp-mode)
 (require 'dud-protobuf-mode)
 
+;; (after! flycheck
+;;   (setq flycheck-check-syntax-automatically '(mode-enabled save)))
+
+(setq debug-on-error t)
 (setq-default tab-width 2)
 (global-auto-revert-mode -1)
 
@@ -181,6 +190,7 @@
   (setq fill-column 75)
   (local-set-key (kbd "M-0") 'dud-c-rotate)
   (local-set-key (kbd "M-9") 'dud-c-rotate-rev)
+  (local-set-key (kbd "M-8") 'dud-open-test-buffer)
   (local-set-key (kbd "M-=") 'clang-format-buffer))
 
 (defun dud-proto-mode-hook ()
@@ -191,6 +201,7 @@
   (setq fill-column 75)
   (local-set-key (kbd "M-0") 'dud-c-rotate)
   (local-set-key (kbd "M-9") 'dud-c-rotate-rev)
+  (local-set-key (kbd "M-8") 'dud-open-test-buffer)
   (local-set-key (kbd "M-=") 'clang-format-buffer))
 
 (defun dud-sh-mode-hook()
