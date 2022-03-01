@@ -10,7 +10,7 @@
 
 ;;; Code:
 
-(package! bazel-mode)
+(package! bazel)
 (package! typescript-mode)
 (package! impatient-mode)
 (package! mixed-pitch)
