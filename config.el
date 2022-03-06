@@ -155,31 +155,6 @@
 (add-hook! sh-mode 'dud-sh-mode-hook)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; Org mode setup
-;; If you use `org' and don't want your org files in the default location below,
-;; change `org-directory'. It must be set before org loads!
-(setq org-directory "~/Projects/org/")
-(use-package org-bullets
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-(setq org-roam-file-exclude-regexp ".git/")
-
-(after! org
-  (setq org-skip-scheduled-if-done t
-        org-tags-column -80
-        org-todo-keywords
-        '((sequence "TODO(t)" "ACTIVE(a)" "WAITING(w)"
-                    "|" "DONE(d)" "CANCELLED(c)"))
-        org-todo-keyword-faces
-        '(("TODO" :foreground "#7c7c75" :weight normal :underline t)
-          ("ACTIVE" :foreground "9f7efe" :weight normal :underline t)
-          ("WAITING" :foreground "#0098dd" :weight normal :underline t)
-          ("DONE" :foreground "#50a14f" :weight normal :underline t)
-          ("CANCELLED" :foreg
-round "#ff6480" :weight normal :underline t))
-        org-ellipsis " ▼ "))
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Key Bindings
