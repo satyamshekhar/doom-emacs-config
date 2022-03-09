@@ -143,10 +143,15 @@
   (display-fill-column-indicator-mode)
   (subword-mode))
 
+(defun dud-text-mode-hook ()
+  "Customizations to text mode."
+  (setq display-line-numbers-type nil))
+
 (add-hook! prog-mode 'dud-prog-mode-hook)
 (add-hook! markdown-mode 'dud-prog-mode-hook)
 (add-hook! protobuf-mode 'dud-prog-mode-hook)
 (add-hook! yaml-mode 'dud-prog-mode-hook)
+(add-hook! text-mode 'dud-text-mode-hook)
 
 ;; Use tabs for C++, Java, Go and Json
 (add-hook! protobuf-mode 'dud-proto-mode-hook)
