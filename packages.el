@@ -15,7 +15,13 @@
 (package! impatient-mode)
 (package! mixed-pitch)
 (package! org-bullets)
+(package! graphql-mode)
+
 (package! color-theme-sanityinc-tomorrow)
+(package! darcula-theme)
+(package! zenburn-theme)
+(package! solarized-theme)
+(package! noctilux-theme)
 
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:

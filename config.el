@@ -17,6 +17,9 @@
 ;; `load-theme' function. This is the default:
 ;; (setq doom-theme 'doom-one-light)
 ;; (setq doom-theme 'sanityinc-tomorrow-day)
+;; (setq doom-theme 'darcula)
+;; (setq doom-theme 'default)
+;; (set-face-background hl-line-face "lightblue")
 (global-hl-line-mode +1)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
@@ -113,6 +116,8 @@
 (global-auto-revert-mode -1)
 
 (defun dud-cc-mode-hook ()
+  (whitespace-mode -1)
+  (whitespace-mode -1)
   (local-set-key (kbd "M-0") 'dud-c-rotate)
   (local-set-key (kbd "M-9") 'dud-c-rotate-rev)
   (local-set-key (kbd "M-8") 'dud-open-test-buffer)
@@ -133,7 +138,6 @@
 
 (defun dud-prog-mode-hook ()
   "Customizations to prog-mode."
-  (whitespace-mode -1)
   (setq display-line-numbers-type 'relative)
   (setq fill-column 75)
   (setq c-basic-offset 2)
